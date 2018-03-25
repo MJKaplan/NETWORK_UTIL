@@ -12,6 +12,7 @@ import os
 from datetime import datetime, timedelta, timezone
 
 
+
 import pytz
 
 import subprocess
@@ -19,11 +20,21 @@ import time
 
 
 
-ip = 'n057-b'
+ip = 'n036-d'
 username = r'artefactory\administrator'
 password = r'/SoGoodToRemember2013_'
 
-                            
+c=wmi.WMI(ip, user=username, password=password)
+os = c.Win32_OperatingSystem (Primary=1)[0]
+os.Reboot ()
+
+#d=c.query("SELECT * FROM Win32_PerfFormattedData_Counters_ProcessorInformation")                         
+#print(d[0])
+
+#watcher = c.Win32_Process.watch_for("modification")
+#event = watcher()
+#print "Modification occurred at", event.timestamp
+
 
 #commanddelB = r'schtasks	/Delete /S {} /U artefactory\administrator /P /SoGoodToRemember2013_ /TN serverbackburner /F'.format(ip)
 #commandB = r'schtasks /Create  /S {} /SD 24/03/2017 /ST 16:50 /SC ONCE /U artefactory\administrator /TN serverbackburner /P /SoGoodToRemember2013_ /TR "C:\Program Files (x86)\Autodesk\Backburner\server.exe"'.format(ip)
@@ -34,13 +45,13 @@ password = r'/SoGoodToRemember2013_'
 #subprocess.run(commandrunB)
     
 
-commanddelV = r'schtasks	/Delete /S {} /U artefactory\administrator /P /SoGoodToRemember2013_ /TN vrayspawner /F'.format(ip)
-commandV = r'schtasks /Create  /S {} /SD 24/03/2017 /ST 16:50 /SC ONCE /U artefactory\administrator /TN vrayspawner /P /SoGoodToRemember2013_ /TR "\"C:\Program Files\Autodesk\3ds Max 2017\vrayspawner2017.exe"\"'.format(ip)
-commandrunV = r'schtasks /Run  /S {} /U artefactory\administrator /TN vrayspawner /P /SoGoodToRemember2013_ '.format(ip)
-
-subprocess.run(commanddelV)
-subprocess.run(commandV)
-subprocess.run(commandrunV)
+#commanddelV = r'schtasks	/Delete /S {} /U artefactory\administrator /P /SoGoodToRemember2013_ /TN vrayspawner /F'.format(ip)
+#commandV = r'schtasks /Create  /S {} /SD 24/03/2017 /ST 16:50 /SC ONCE /U artefactory\administrator /TN vrayspawner /P /SoGoodToRemember2013_ /TR "\"C:\Program Files\Autodesk\3ds Max 2017\vrayspawner2017.exe"\"'.format(ip)
+#commandrunV = r'schtasks /Run  /S {} /U artefactory\administrator /TN vrayspawner /P /SoGoodToRemember2013_ '.format(ip)
+#
+#subprocess.run(commanddelV)
+#subprocess.run(commandV)
+#subprocess.run(commandrunV)
 
 
 # =============================================================================
