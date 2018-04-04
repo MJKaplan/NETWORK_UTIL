@@ -25,13 +25,13 @@ username = r'artefactory\administrator'
 password = r'/SoGoodToRemember2013_'
 
 c=wmi.WMI(ip, user=username, password=password)
-os = c.Win32_OperatingSystem (Primary=1)[0]
-os.Reboot ()
+#os = c.Win32_OperatingSystem (Primary=1)[0]
+#os.Reboot ()
 
 #d=c.query("SELECT * FROM Win32_PerfFormattedData_Counters_ProcessorInformation")                         
 #print(d[0])
 
-#watcher = c.Win32_Process.watch_for("modification")
+#watcher = c.Win32_Process.watch_for("creation")
 #event = watcher()
 #print "Modification occurred at", event.timestamp
 
